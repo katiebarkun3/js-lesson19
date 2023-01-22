@@ -5,6 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .block{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
 </head>
 <body>
     
@@ -96,6 +103,28 @@
         /* user.age = 26; */
 
 
+ function El() { 
+            this._el = document.createElement('div'); // _ - внегласное правило, не менять элемент
+            this._width = '200px';
+            this._el.style.width = '200px';
+            this._el.classList.add('block');
+            document.body.append(this._el);
+
+            Object.defineProperties(this, {
+                newAge: { // X
+                    get() {
+                    console.log(this._width);
+                    },
+                    set(newWidth) {
+                        this._width = newWidth;
+                        this.el._style.width = `${newWidth}px`;
+                    }
+                }
+            })
+            
+            
+        }
+        let el = new El();
 
 
     </script>
